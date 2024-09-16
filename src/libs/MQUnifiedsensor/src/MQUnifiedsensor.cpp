@@ -166,7 +166,7 @@ void MQUnifiedsensor::update()
     else
     {
         uint8_t temp[2];
-        Wire.requestFrom(addr, 2);
+        Wire.requestFrom((uint8_t)addr, (uint8_t)2);  // Fix: Cast both parameters to uint8_t
         temp[0] = Wire.read();
         temp[1] = Wire.read();
         _adc = (temp[0] | temp[1] << 8);
